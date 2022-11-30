@@ -6,6 +6,10 @@ param appServicePlanName string
   'prod'
 ])
 param environmentType string
+param dbhost string
+param dbuser string
+param dbpass string
+param dbname string
 
 var appServicePlanSkuName = (environmentType == 'prod') ? 'P2V3' : 'F1'
 
@@ -22,6 +26,26 @@ location: location
 properties: {
   serverFarmId: appServicePlan.id
   httpsOnly: true
+  siteConfig: {
+    appSettings: [
+    {
+    name: 'DBUSER'
+    value: dbuser
+    }
+    {
+    name: 'DBPASS'
+    value: dbpass
+    }
+    {
+    name: 'DBNAME'
+    value: dbname
+    }
+    {
+    name: 'DBHOST'
+    value: dbhost
+    }
+    ]
+    }
   }
 }
 
