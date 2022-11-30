@@ -9,7 +9,7 @@ param appServicePlanName string = 'jrubiales-app-bicep'
 @sys.description('The Storage Account name.')
 @minLength(3)
 @maxLength(24)
-param storageAccountName string = 'jrubialesstorage'
+param storageAccountName string = 'jrubiales-storage'
 @allowed([
   'nonprod'
   'prod'
