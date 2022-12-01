@@ -23,9 +23,8 @@ jobs:
 
     steps:
 
-      # Checkout code
     - uses: actions/checkout@main
-    
+
       # Log into Azure
     - uses: azure/login@v1
       with:
@@ -50,9 +49,7 @@ jobs:
 
     steps:
 
-      # Checkout code
     - uses: actions/checkout@main
-
       # Log into Azure
     - uses: azure/login@v1
       with:
