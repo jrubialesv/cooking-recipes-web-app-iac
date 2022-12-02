@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      # Checkout codeC
+      # Checkout code
     - uses: actions/checkout@main
 
       # Lint Bicep code 
