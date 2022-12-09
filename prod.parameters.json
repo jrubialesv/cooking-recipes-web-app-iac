@@ -2,14 +2,20 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "appServiceAppName": {
-            "value": "jrubiales-app-prod-bicep"
+        "appServiceAppName1": {
+            "value": "jrubiales-assignment-backend-prod"
         },
-        "appServicePlanName": {
-            "value": "jrubiales-app-prod-bicep"
+        "appServiceAppName3": {
+            "value": "jrubiales-assignment-frontend-prod"
+        },
+        "appServicePlanName1": {
+            "value": "jrubiales-assignment-prod"
         },
         "storageAccountName": {
             "value": "jrubialesprodstorage"
+        },
+        "environmentType": {
+            "value": "prod"
         }
     }
 }
