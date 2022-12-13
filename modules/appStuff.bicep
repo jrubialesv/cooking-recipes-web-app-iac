@@ -6,14 +6,15 @@ param dbuser string
 param dbpass string
 param dbname string
 
-var appServicePlanSkuName = 'B1'
+var appServicePlanName_s = 'B1'
 
 resource appServicePlan 'Microsoft.Web/serverFarms@2022-03-01' = {
   name: appServicePlanName
   location: location
   sku: {
-    name: appServicePlanSkuName
+    name: appServicePlanName_s
   }
+  kind: 'linux'
 }
 resource appServiceApp 'Microsoft.Web/sites@2022-03-01' = {
 name: appServiceAppName
@@ -22,6 +23,7 @@ properties: {
   serverFarmId: appServicePlan.id
   httpsOnly: true
   siteConfig: {
+    appCommandLine: 'pm2 serve /home/site/wwwroot/dist --no-daemon --spa'
     appSettings: [
       {
         name: 'DBUSER'
