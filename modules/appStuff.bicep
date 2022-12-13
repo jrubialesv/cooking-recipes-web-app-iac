@@ -14,7 +14,7 @@ resource appServicePlan 'Microsoft.Web/serverFarms@2022-03-01' = {
   sku: {
     name: appServicePlanName_s
   }
-  kind: 'linux'
+  // kind: 'linux'
 }
 resource appServiceApp 'Microsoft.Web/sites@2022-03-01' = {
 name: appServiceAppName
@@ -23,7 +23,6 @@ properties: {
   serverFarmId: appServicePlan.id
   httpsOnly: true
   siteConfig: {
-    appCommandLine: 'pm2 serve /home/site/wwwroot/dist --no-daemon --spa'
     appSettings: [
       {
         name: 'DBUSER'
