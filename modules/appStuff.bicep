@@ -12,6 +12,7 @@ resource appServicePlan 'Microsoft.Web/serverFarms@2022-03-01' = {
   name: appServicePlanName
   location: location
   kind: 'linux'
+
   properties: {
 
     reserved: true
@@ -31,6 +32,8 @@ properties: {
   serverFarmId: appServicePlan.id
   httpsOnly: true
   siteConfig: {
+    appCommandLine: 'pm2 serve /home/site/wwwroot/dist --no-daemon --spa'
+
     appSettings: [
       {
         name: 'DBUSER'
