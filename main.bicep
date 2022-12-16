@@ -1,11 +1,11 @@
 @sys.description('The Web App name.')
 @minLength(3)
 @maxLength(30)
-param appServiceAppNameprodb string = 'jrubiales-assignment-backend-prod'
+param appServiceAppNameprodb string = 'jrubiales-assignment-be-prod'
 @sys.description('The Web App name.')
 @minLength(3)
 @maxLength(30)
-param appServiceAppNameprodf string = 'jrubiales-assignment-frontend-prod'
+param appServiceAppNameprodf string = 'jrubiales-assignment-fe-prod'
 @sys.description('The App Service Plan name.')
 @minLength(3)
 @maxLength(30)
@@ -13,10 +13,10 @@ param appServicePlanNameprod string = 'jrubiales-assignment-prod'
 @sys.description('The Web App name.')
 @minLength(3)
 @maxLength(30)
-param appServiceAppNamedevb string = 'jrubiales-assignment-backend-dev'
+param appServiceAppNamedevb string = 'jrubiales-assignment-be-dev'
 @minLength(3)
 @maxLength(30)
-param appServiceAppNamedevf string = 'jrubiales-assignment-frontend-dev'
+param appServiceAppNamedevf string = 'jrubiales-assignment-fe-dev'
 @sys.description('The App Service Plan name.')
 @minLength(3)
 @maxLength(30)
@@ -64,6 +64,8 @@ module appService1 'modules/appStuff.bicep' = if (environmentType == 'prod') {
     location: location
     appServiceAppName: appServiceAppNameprodb
     appServicePlanName: appServicePlanNameprod
+    runtimeStack: 'Python|3.10'
+    command: ''
     dbhost: dbhost
     dbuser: dbuser
     dbpass: dbpass
@@ -77,6 +79,8 @@ module appService3 'modules/appStuff.bicep' = if (environmentType == 'prod') {
     location: location
     appServiceAppName: appServiceAppNameprodf
     appServicePlanName: appServicePlanNameprod
+    runtimeStack: 'Node|14-lts'
+    command: 'pm2 serve /home/site/wwwroot/dist --no-daemon --spa'
     dbhost: dbhost
     dbuser: dbuser
     dbpass: dbpass
@@ -91,6 +95,8 @@ module appService2 'modules/appStuff.bicep' = if (environmentType == 'nonprod') 
     location: location
     appServiceAppName: appServiceAppNamedevb
     appServicePlanName: appServicePlanNamedev
+    runtimeStack: 'Python|3.10'
+    command: ''
     dbhost: dbhost
     dbuser: dbuser
     dbpass: dbpass
@@ -104,6 +110,8 @@ module appService4 'modules/appStuff.bicep' = if (environmentType == 'nonprod') 
     location: location
     appServiceAppName: appServiceAppNamedevf
     appServicePlanName: appServicePlanNamedev
+    runtimeStack: 'Node|14-lts'
+    command: 'pm2 serve /home/site/wwwroot/dist --no-daemon --spa'
     dbhost: dbhost
     dbuser: dbuser
     dbpass: dbpass
