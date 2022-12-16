@@ -14,11 +14,8 @@ resource appServicePlan 'Microsoft.Web/serverFarms@2022-03-01' = {
   name: appServicePlanName
   location: location
   kind: 'linux'
-
   properties: {
-
     reserved: true
-
   }
   sku: {
     name: appServicePlanName_s
@@ -31,6 +28,7 @@ location: location
 kind: 'linux'
 properties: {
   reserved: true
+  
   serverFarmId: appServicePlan.id
   httpsOnly: true
   siteConfig: {
@@ -52,6 +50,10 @@ properties: {
       {
         name: 'DBHOST'
         value: dbhost
+      }
+      {
+        name: 'SCM_DO_BUILD_DURING_DEPLOYMENT'
+        value: '1'
       }
     ]
   }

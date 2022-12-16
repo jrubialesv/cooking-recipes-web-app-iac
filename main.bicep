@@ -84,8 +84,7 @@ module appServiceprodfe 'modules/appStuff.bicep' = if (environmentType == 'prod'
     dbhost: dbhost
     dbuser: dbuser
     dbpass: dbpass
-    dbname: dbname
-    
+    dbname: dbname    
   }
 }
 
