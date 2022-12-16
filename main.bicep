@@ -58,7 +58,7 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2022-05-01' = {
 
  
 
-module appService1 'modules/appStuff.bicep' = if (environmentType == 'prod') {
+module appServiceprodbe 'modules/appStuff.bicep' = if (environmentType == 'prod') {
   name: 'appService1'
   params: { 
     location: location
@@ -73,7 +73,7 @@ module appService1 'modules/appStuff.bicep' = if (environmentType == 'prod') {
   }
 }
 
-module appService3 'modules/appStuff.bicep' = if (environmentType == 'prod') {
+module appServiceprodfe 'modules/appStuff.bicep' = if (environmentType == 'prod') {
   name: 'appService3'
   params: { 
     location: location
@@ -89,7 +89,7 @@ module appService3 'modules/appStuff.bicep' = if (environmentType == 'prod') {
   }
 }
 
-module appService2 'modules/appStuff.bicep' = if (environmentType == 'nonprod') {
+module appServicepdevbe 'modules/appStuff.bicep' = if (environmentType == 'nonprod') {
   name: 'appService2'
   params: { 
     location: location
@@ -104,7 +104,7 @@ module appService2 'modules/appStuff.bicep' = if (environmentType == 'nonprod') 
   }
 }
 
-module appService4 'modules/appStuff.bicep' = if (environmentType == 'nonprod') {
+module appServicedevfe 'modules/appStuff.bicep' = if (environmentType == 'nonprod') {
   name: 'appService4'
   params: { 
     location: location
@@ -119,5 +119,5 @@ module appService4 'modules/appStuff.bicep' = if (environmentType == 'nonprod') 
   }
 }
 
-output appServiceAppHostName1 string = (environmentType == 'prod') ? appService1.outputs.appServiceAppHostName : appService2.outputs.appServiceAppHostName
-output appServiceAppHostName2 string = (environmentType == 'prod') ? appService3.outputs.appServiceAppHostName : appService4.outputs.appServiceAppHostName
+output appServiceAppHostNameprod string = (environmentType == 'prod') ? appServiceprodbe.outputs.appServiceAppHostName : appServiceprodfe.outputs.appServiceAppHostName
+output appServiceAppHostNamedev string = (environmentType == 'dev') ? appServicepdevbe.outputs.appServiceAppHostName : appServicedevfe.outputs.appServiceAppHostName
