@@ -89,7 +89,7 @@ module appServiceprodfe 'modules/appStuff.bicep' = if (environmentType == 'prod'
   }
 }
 
-module appServicepdevbe 'modules/appStuff.bicep' = if (environmentType == 'nonprod') {
+module appServicedevbe 'modules/appStuff.bicep' = if (environmentType == 'nonprod') {
   name: 'appService2'
   params: { 
     location: location
@@ -119,5 +119,5 @@ module appServicedevfe 'modules/appStuff.bicep' = if (environmentType == 'nonpro
   }
 }
 
-output appServiceAppHostNameprod string = (environmentType == 'prod') ? appServiceprodbe.outputs.appServiceAppHostName : appServiceprodfe.outputs.appServiceAppHostName
-output appServiceAppHostNamedev string = (environmentType == 'dev') ? appServicepdevbe.outputs.appServiceAppHostName : appServicedevfe.outputs.appServiceAppHostName
+output appServiceAppHostNameprod string = (environmentType == 'prod') ? appServiceprodbe.outputs.appServiceAppHostName : appServicedevbe.outputs.appServiceAppHostName
+output appServiceAppHostNamedev string = (environmentType == 'dev') ? appServiceprodfe.outputs.appServiceAppHostName : appServicedevfe.outputs.appServiceAppHostName
