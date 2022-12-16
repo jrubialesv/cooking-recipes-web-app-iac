@@ -65,7 +65,7 @@ module appService1 'modules/appStuff.bicep' = if (environmentType == 'prod') {
     appServiceAppName: appServiceAppNameprodb
     appServicePlanName: appServicePlanNameprod
     runtimeStack: 'Python|3.10'
-    command: ''
+    command: 'pm2 serve /home/site/wwwroot/dist --no-daemon --spa'
     dbhost: dbhost
     dbuser: dbuser
     dbpass: dbpass
@@ -96,7 +96,7 @@ module appService2 'modules/appStuff.bicep' = if (environmentType == 'nonprod') 
     appServiceAppName: appServiceAppNamedevb
     appServicePlanName: appServicePlanNamedev
     runtimeStack: 'Python|3.10'
-    command: ''
+    command: 'pm2 serve /home/site/wwwroot/dist --no-daemon --spa'
     dbhost: dbhost
     dbuser: dbuser
     dbpass: dbpass
