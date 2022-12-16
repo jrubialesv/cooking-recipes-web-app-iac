@@ -5,6 +5,8 @@ param dbhost string
 param dbuser string
 param dbpass string
 param dbname string
+param runtimeStack string
+param command string
 
 var appServicePlanName_s = 'B1'
 
@@ -32,8 +34,8 @@ properties: {
   serverFarmId: appServicePlan.id
   httpsOnly: true
   siteConfig: {
-    appCommandLine: 'pm2 serve /home/site/wwwroot/dist --no-daemon --spa'
-
+    linuxFxVersion: runtimeStack
+    appCommandLine: command
     appSettings: [
       {
         name: 'DBUSER'
