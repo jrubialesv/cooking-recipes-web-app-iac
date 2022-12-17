@@ -12,7 +12,7 @@
             "value": "jrubiales-assignment-dev"
         },
         "storageAccountName": {
-            "value": "jrubiales-assignment-dev-db"
+            "value": "jrubiales-dev-db"
         },
         "environmentType": {
             "value": "nonprod"
