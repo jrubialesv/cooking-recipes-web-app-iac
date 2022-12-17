@@ -12,7 +12,7 @@
             "value": "jrubiales-assignment-prod"
         },
         "storageAccountName": {
-            "value": "jrubialesprodstorage"
+            "value": "jrubiales-assignment-prod-db"
         },
         "environmentType": {
             "value": "prod"
