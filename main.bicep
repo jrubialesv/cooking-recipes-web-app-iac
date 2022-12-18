@@ -29,6 +29,7 @@ param storageAccountName string = 'jrubialesstorage'
   'nonprod'
   'prod'
   ])
+
 param environmentType string = 'nonprod'
 param location string = resourceGroup().location
 
@@ -59,7 +60,7 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2022-05-01' = {
  
 
 module appServiceprodbe 'modules/appStuff.bicep' = if (environmentType == 'prod') {
-  name: 'appService1'
+  name: 'appServiceprodbe'
   params: { 
     location: location
     appServiceAppName: appServiceAppNameprodb
@@ -74,7 +75,7 @@ module appServiceprodbe 'modules/appStuff.bicep' = if (environmentType == 'prod'
 }
 
 module appServiceprodfe 'modules/appStuff.bicep' = if (environmentType == 'prod') {
-  name: 'appService3'
+  name: 'appServiceprodfe'
   params: { 
     location: location
     appServiceAppName: appServiceAppNameprodf
@@ -89,7 +90,7 @@ module appServiceprodfe 'modules/appStuff.bicep' = if (environmentType == 'prod'
 }
 
 module appServicedevbe 'modules/appStuff.bicep' = if (environmentType == 'nonprod') {
-  name: 'appService2'
+  name: 'appServicedevbe'
   params: { 
     location: location
     appServiceAppName: appServiceAppNamedevb
@@ -104,7 +105,7 @@ module appServicedevbe 'modules/appStuff.bicep' = if (environmentType == 'nonpro
 }
 
 module appServicedevfe 'modules/appStuff.bicep' = if (environmentType == 'nonprod') {
-  name: 'appService4'
+  name: 'appServicedevfe'
   params: { 
     location: location
     appServiceAppName: appServiceAppNamedevf
@@ -118,5 +119,5 @@ module appServicedevfe 'modules/appStuff.bicep' = if (environmentType == 'nonpro
   }
 }
 
-output appServiceAppHostNameprod string = (environmentType == 'prod') ? appServiceprodbe.outputs.appServiceAppHostName : appServicedevbe.outputs.appServiceAppHostName
-output appServiceAppHostNamedev string = (environmentType == 'prod') ? appServiceprodfe.outputs.appServiceAppHostName : appServicedevfe.outputs.appServiceAppHostName
+output appServiceAppHostNamebackend string = (environmentType == 'prod') ? appServiceprodbe.outputs.appServiceAppHostName : appServicedevbe.outputs.appServiceAppHostName
+output appServiceAppHostNamefrontend string = (environmentType == 'prod') ? appServiceprodfe.outputs.appServiceAppHostName : appServicedevfe.outputs.appServiceAppHostName
