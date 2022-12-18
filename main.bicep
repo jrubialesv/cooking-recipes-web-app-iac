@@ -43,22 +43,6 @@ param dbpass string
 param dbname string
 
 
-var storageAccountSkuName = (environmentType == 'prod') ? 'Standard_GRS' : 'Standard_LRS'  
-
-resource storageAccount 'Microsoft.Storage/storageAccounts@2022-05-01' = {
-    name: storageAccountName
-    location: location
-    sku: {
-      name: storageAccountSkuName
-    }
-    kind: 'StorageV2'
-    properties: {
-      accessTier: 'Hot'
-    }
-  }
-
- 
-
 module appServiceprodbe 'modules/appStuff.bicep' = if (environmentType == 'prod') {
   name: 'appServiceprodbe'
   params: { 
