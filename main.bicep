@@ -21,16 +21,12 @@ param appServiceAppNamedevf string = 'jrubiales-assignment-fe-dev'
 @minLength(3)
 @maxLength(30)
 param appServicePlanNamedev string = 'jrubiales-assignment-dev'
-@sys.description('The Storage Account name.')
-@minLength(3)
-@maxLength(30)
-param storageAccountName string = 'jrubialesstorage'
 @allowed([
-  'nonprod'
+  'dev'
   'prod'
   ])
 
-param environmentType string = 'nonprod'
+param environmentType string = 'dev'
 param location string = resourceGroup().location
 
 @secure()
@@ -42,22 +38,6 @@ param dbpass string
 @secure()
 param dbname string
 
-
-var storageAccountSkuName = (environmentType == 'prod') ? 'Standard_GRS' : 'Standard_LRS'  
-
-resource storageAccount 'Microsoft.Storage/storageAccounts@2022-05-01' = {
-    name: storageAccountName
-    location: location
-    sku: {
-      name: storageAccountSkuName
-    }
-    kind: 'StorageV2'
-    properties: {
-      accessTier: 'Hot'
-    }
-  }
-
- 
 
 module appServiceprodbe 'modules/appStuff.bicep' = if (environmentType == 'prod') {
   name: 'appServiceprodbe'
@@ -89,7 +69,7 @@ module appServiceprodfe 'modules/appStuff.bicep' = if (environmentType == 'prod'
   }
 }
 
-module appServicedevbe 'modules/appStuff.bicep' = if (environmentType == 'nonprod') {
+module appServicedevbe 'modules/appStuff.bicep' = if (environmentType == 'dev') {
   name: 'appServicedevbe'
   params: { 
     location: location
@@ -104,7 +84,7 @@ module appServicedevbe 'modules/appStuff.bicep' = if (environmentType == 'nonpro
   }
 }
 
-module appServicedevfe 'modules/appStuff.bicep' = if (environmentType == 'nonprod') {
+module appServicedevfe 'modules/appStuff.bicep' = if (environmentType == 'dev') {
   name: 'appServicedevfe'
   params: { 
     location: location

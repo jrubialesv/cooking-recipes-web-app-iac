@@ -8,7 +8,7 @@ param dbname string
 param runtimeStack string
 param command string
 
-var appServicePlanName_s = 'B1'
+var appServicePlanName_tier = 'B1'
 
 resource appServicePlan 'Microsoft.Web/serverFarms@2022-03-01' = {
   name: appServicePlanName
@@ -18,7 +18,7 @@ resource appServicePlan 'Microsoft.Web/serverFarms@2022-03-01' = {
     reserved: true
   }
   sku: {
-    name: appServicePlanName_s
+    name: appServicePlanName_tier
   }
 
 }

@@ -11,9 +11,6 @@
         "appServicePlanNameprod": {
             "value": "jrubiales-assignment-prod"
         },
-        "storageAccountName": {
-            "value": "jrubialesprodstorage"
-        },
         "environmentType": {
             "value": "prod"
         }
