@@ -11,11 +11,8 @@
         "appServicePlanNamedev": {
             "value": "jrubiales-assignment-dev"
         },
-        "storageAccountName": {
-            "value": "jrubialesdevstorage"
-        },
         "environmentType": {
-            "value": "nonprod"
+            "value": "dev"
         }
     }
 }

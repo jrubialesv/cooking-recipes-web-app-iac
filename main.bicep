@@ -21,16 +21,12 @@ param appServiceAppNamedevf string = 'jrubiales-assignment-fe-dev'
 @minLength(3)
 @maxLength(30)
 param appServicePlanNamedev string = 'jrubiales-assignment-dev'
-@sys.description('The Storage Account name.')
-@minLength(3)
-@maxLength(30)
-param storageAccountName string = 'jrubialesstorage'
 @allowed([
-  'nonprod'
+  'dev'
   'prod'
   ])
 
-param environmentType string = 'nonprod'
+param environmentType string = 'dev'
 param location string = resourceGroup().location
 
 @secure()
@@ -73,7 +69,7 @@ module appServiceprodfe 'modules/appStuff.bicep' = if (environmentType == 'prod'
   }
 }
 
-module appServicedevbe 'modules/appStuff.bicep' = if (environmentType == 'nonprod') {
+module appServicedevbe 'modules/appStuff.bicep' = if (environmentType == 'dev') {
   name: 'appServicedevbe'
   params: { 
     location: location
@@ -88,7 +84,7 @@ module appServicedevbe 'modules/appStuff.bicep' = if (environmentType == 'nonpro
   }
 }
 
-module appServicedevfe 'modules/appStuff.bicep' = if (environmentType == 'nonprod') {
+module appServicedevfe 'modules/appStuff.bicep' = if (environmentType == 'dev') {
   name: 'appServicedevfe'
   params: { 
     location: location
