@@ -1,26 +1,26 @@
 @sys.description('The Web App name.')
 @minLength(3)
 @maxLength(30)
-param appServiceAppNameprodb string
+param appServiceAppNameprodb string = 'jrubiales-assignment-be-prod'
 @sys.description('The Web App name.')
 @minLength(3)
 @maxLength(30)
-param appServiceAppNameprodf string 
+param appServiceAppNameprodf string = 'jrubiales-assignment-fe-prod'
 @sys.description('The App Service Plan name.')
 @minLength(3)
 @maxLength(30)
-param appServicePlanNameprod string 
+param appServicePlanNameprod string = 'jrubiales-assignment-prod'
 @sys.description('The Web App name.')
 @minLength(3)
 @maxLength(30)
-param appServiceAppNamedevb string 
+param appServiceAppNamedevb string = 'jrubiales-assignment-be-dev'
 @minLength(3)
 @maxLength(30)
-param appServiceAppNamedevf string 
+param appServiceAppNamedevf string = 'jrubiales-assignment-fe-dev'
 @sys.description('The App Service Plan name.')
 @minLength(3)
 @maxLength(30)
-param appServicePlanNamedev string
+param appServicePlanNamedev string = 'jrubiales-assignment-dev'
 @sys.description('The Storage Account name.')
 @minLength(3)
 @maxLength(30)
