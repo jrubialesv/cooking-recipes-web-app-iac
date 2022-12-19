@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     environment:
-      name: 'dev'
+      name: 'Development'
 
     steps:
 
@@ -51,7 +51,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     environment: 
-      name: 'prod'
+      name: 'Production'
 
     steps:
 

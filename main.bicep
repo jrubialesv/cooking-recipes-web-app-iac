@@ -14,6 +14,7 @@ param appServicePlanNameprod string = 'jrubiales-assignment-prod'
 @minLength(3)
 @maxLength(30)
 param appServiceAppNamedevb string = 'jrubiales-assignment-be-dev'
+@sys.description('The Web App name.')
 @minLength(3)
 @maxLength(30)
 param appServiceAppNamedevf string = 'jrubiales-assignment-fe-dev'
@@ -22,11 +23,11 @@ param appServiceAppNamedevf string = 'jrubiales-assignment-fe-dev'
 @maxLength(30)
 param appServicePlanNamedev string = 'jrubiales-assignment-dev'
 @allowed([
-  'dev'
+  'nonprod'
   'prod'
   ])
 
-param environmentType string = 'dev'
+param environmentType string = 'nonprod'
 param location string = resourceGroup().location
 
 @secure()
@@ -69,7 +70,7 @@ module appServiceprodfe 'modules/appStuff.bicep' = if (environmentType == 'prod'
   }
 }
 
-module appServicedevbe 'modules/appStuff.bicep' = if (environmentType == 'dev') {
+module appServicedevbe 'modules/appStuff.bicep' = if (environmentType == 'nonprod') {
   name: 'appServicedevbe'
   params: { 
     location: location
@@ -84,7 +85,7 @@ module appServicedevbe 'modules/appStuff.bicep' = if (environmentType == 'dev') 
   }
 }
 
-module appServicedevfe 'modules/appStuff.bicep' = if (environmentType == 'dev') {
+module appServicedevfe 'modules/appStuff.bicep' = if (environmentType == 'nonprod') {
   name: 'appServicedevfe'
   params: { 
     location: location
