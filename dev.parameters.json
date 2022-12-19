@@ -12,7 +12,7 @@
             "value": "jrubiales-assignment-dev"
         },
         "environmentType": {
-            "value": "dev"
+            "value": "nonprod"
         }
     }
 }
