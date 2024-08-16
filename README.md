@@ -83,4 +83,4 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Juan J. Rubiales - [jrubialesv@gmail.com](mailto:jrubialesv@gmail.com)
 
-Project Link: [https://github.com/your_username/cooking-recipes-web-app-iac](https://github.com/your_username/cooking-recipes-web-app-iac)
+Project Link: [https://github.com/jrubialesv/cooking-recipes-web-app-iac](https://github.com/jrubialesv/cooking-recipes-web-app-iac)
